@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Aroma - Freshly Brewed Daily</title>
+    <style>
+        /* Base Setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Isse menu par click karne se smooth scrolling hogi */
+        }
+
+        body {
+            background-color: #fcf8f5;
+            color: #332211;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6f4e37;
+            letter-spacing: 1px;
+        }
+
+        nav .nav-links a {
+            text-decoration: none;
+            color: #555;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav .nav-links a:hover {
+            color: #6f4e37;
+        }
+
+        nav .cta-btn a {
+            text-decoration: none;
+            background-color: #6f4e37;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        nav .cta-btn a:hover {
+            background-color: #553c29;
+        }
+
+        /* Hero Header Section */
+        header {
+            height: 75vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1600&auto=format&fit=crop') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        header .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        header .hero-content p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* 4-Card Service Feature Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            padding: 60px 8%;
+            background-color: #fff;
+        }
+
+        .feature-card {
+            background-color: #fdfaf7;
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #f1e6dc;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(111, 78, 55, 0.1);
+        }
+
+        .feature-card h2 {
+            font-size: 20px;
+            color: #6f4e37;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* About / Split Section */
+        .about-split {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 80px 8%;
+            gap: 40px;
+        }
+
+        .about-split .image-side {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-split .image-side img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            object-fit: cover;
+            height: 400px;
+        }
+
+        .about-split .text-side {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-split .text-side h2 {
+            font-size: 36px;
+            color: #332211;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .about-split .text-side p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* --- Our Menu Section CSS --- */
+        .menu-section {
+            padding: 80px 8%;
+            background-color: #fff;
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .menu-header h2 {
+            font-size: 36px;
+            color: #332211;
+            margin-bottom: 15px;
+        }
+
+        .menu-header p {
+            font-size: 16px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px 50px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e1d6cd;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateX(5px);
+            border-bottom-color: #6f4e37;
+        }
+
+        .item-info {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .item-info h3 {
+            font-size: 18px;
+            color: #332211;
+            margin-bottom: 5px;
+        }
+
+        .item-info p {
+            font-size: 14px;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        .item-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #6f4e37;
+            white-space: nowrap;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-us {
+            padding: 80px 8%;
+            background-color: #f7ede2;
+            text-align: center;
+        }
+
+        .why-choose-us h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #332211;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .why-item {
+            background-color: #fff;
+            padding: 40px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .why-item h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #6f4e37;
+        }
+
+        .why-item p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer Basic */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #332211;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        /* Responsive Setup */
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 15px; text-align: center; }
+            header { height: 60vh; }
+            header .hero-content h1 { font-size: 32px; }
+            .about-split { flex-direction: column-reverse; }
+            .menu-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">Cafe_Aroma</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <!-- Link ko #menu ID di hai taake click karne par page smooth scroll ho sake -->
+            <a href="#menu">Our Menu</a>
+            <a href="#why-choose">Special Offers</a>
+            <a href="#about">About Us</a>
+            <a href="#">FAQ</a>
+        </div>
+        <div class="cta-btn">
+            <a href="#menu">Order Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Header Section -->
+    <header>
+        <div class="hero-content">
+            <h1>Start Your Day With Perfect Coffee</h1>
+            <p>Every cup is crafted with premium roasted beans, rich flavor profiles, and a passion for brewing excellence.</p>
+        </div>
+    </header>
+
+    <!-- 4-Card Service Feature Section -->
+    <section class="features-grid">
+        <div class="feature-card">
+            <h2>Artisan Roasting</h2>
+            <p>We source fine single-origin beans and roast them in-house to bring out deep, rich notes.</p>
+        </div>
+        <div class="feature-card">
+            <h2>Perfect Brewing</h2>
+            <p>Our skilled baristas dial in every shot with precise temperature and extraction timing.</p>
+        </div>
+        <div class="feature-card">
+            <h2>Fresh Pastries</h2>
+            <p>Baked fresh every morning to pair perfectly with your hot latte or cold brew.</p>
+        </div>
+        <div class="feature-card">
+            <h2>Cozy Ambience</h2>
+            <p>A welcoming space equipped with fast Wi-Fi, warm lighting, and comfortable seating.</p>
+        </div>
+    </section>
+
+    <!-- About / Split Section -->
+    <section id="about" class="about-split">
+        <div class="image-side">
+            <img alt="Barista pouring latte art" src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop">
+        </div>
+        <div class="text-side">
+            <h2>Explore The Richness of Cafe_Aroma</h2>
+            <p>
+                At Cafe_Aroma, we believe coffee is more than just a morning routine—it's an experience. 
+                From our rich espresso blends to our smooth cold brews, we focus on quality at every step. 
+                Whether you're stopping by for your daily morning pick-me-up, looking for a quiet corner to 
+                get some work done, or catching up with close friends, we provide the perfect setting and unforgettable flavors.
+            </p>
+        </div>
+    </section>
+
+    <!-- --- New Our Menu Section --- -->
+    <section id="menu" class="menu-section">
+        <div class="menu-header">
+            <h2>Our Signature Menu</h2>
+            <p>Handcrafted drinks and fresh bites made to elevate your coffee shop experience daily.</p>
+        </div>
+        
+        <div class="menu-grid">
+            <!-- Item 1 -->
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Classic Espresso</h3>
+                    <p>Rich, bold, and concentrated espresso shot made from pure Arabica beans.</p>
+                </div>
+                <div class="item-price">$3.50</div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Vanilla Latte</h3>
+                    <p>Espresso mixed with smooth steamed milk and flavored with premium vanilla syrup.</p>
+                </div>
+                <div class="item-price">$4.50</div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Caramel Macchiato</h3>
+                    <p>Fresh milk with rich espresso layered perfectly and topped with sweet caramel drizzle.</p>
+                </div>
+                <div class="item-price">$4.75</div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Hazelnut Cold Brew</h3>
+                    <p>Slow-steeped iced coffee infused with natural, creamy hazelnut flavor.</p>
+                </div>
+                <div class="item-price">$4.95</div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Matcha Latte</h3>
+                    <p>Finely ground Japanese green tea whisked beautifully with velvety steamed milk.</p>
+                </div>
+                <div class="item-price">$5.20</div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="menu-item">
+                <div class="item-info">
+                    <h3>Almond Croissant</h3>
+                    <p>Flaky, buttery pastry crust loaded with sweet almond filling and toasted slices.</p>
+                </div>
+                <div class="item-price">$3.95</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose" class="why-choose-us">
+        <h2>Why Choose Cafe_Aroma?</h2>
+        <div class="why-grid">
+            <div class="why-item">
+                <h3>🌱 Premium Beans</h3>
+                <p>100% ethically sourced Arabica beans from top sustainable farms around the globe.</p>
+            </div>
+            <div class="why-item">
+                <h3>☕ Expert Baristas</h3>
+                <p>Our team is professionally certified and deeply passionate about the science of coffee.</p>
+            </div>
+            <div class="why-item">
+                <h3>🛡️ Quality Standard</h3>
+                <p>Strict hygiene protocols and zero compromise on the freshness of our ingredients.</p>
+            </div>
+            <div class="why-item">
+                <h3>📞 Friendly Service</h3>
+                <p>Always greeting you with a smile and making sure your coffee is exactly how you like it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Cafe_Aroma. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
